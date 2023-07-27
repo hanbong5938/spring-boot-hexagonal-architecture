@@ -2,26 +2,27 @@ package com.example.domain.aggregate
 
 import com.example.domain.entity.Product
 
-class ProductAggregate(private val products: MutableMap<Long, Product>) {
+class ProductAggregate(private val products: MutableList<Product>) {
     fun getAllProducts(): List<Product> {
-        return products.values.stream().toList()
+        return products
     }
 
     fun getProductById(id: Long): Product? {
-        return products[id]
+        return products.find { it.id == id }
     }
 
     fun addProduct(product: Product) {
-        products.put(product.id, product)
+        products.add(product)
     }
 
-    fun deleteProduct(id: Long) {
-        products.remove(id)
+    fun deleteProduct(product: Product) {
+        products.remove(product)
     }
 
     fun updateProduct(product: Product) {
-        if (products.containsKey(product.id)) {
-            addProduct(product)
+        val target: Product? = products.find { it.id == product.id }
+        if (target != null) {
+            products[products.indexOf(target)] = product
         } else {
             throw IllegalArgumentException("Product with ID ${product.id} does not exist.")
         }

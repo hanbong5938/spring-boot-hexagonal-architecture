@@ -1,6 +1,7 @@
 package com.example.domain.service
 
 import com.example.domain.entity.Product
+import com.example.domain.enums.MoneyCurrency
 import com.example.domain.enums.ProductStatus
 import com.example.domain.vo.Money
 
@@ -12,7 +13,7 @@ class ProductCreateService {
                 name = "Product 1",
                 money = Money(
                     amount = 100.0,
-                    currency = "USD"
+                    currency = MoneyCurrency.USD
                 ),
                 status = ProductStatus.ACTIVE
             )
