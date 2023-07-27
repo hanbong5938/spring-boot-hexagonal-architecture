@@ -1,3 +1,5 @@
 package com.example.domain.vo
 
-data class Money(val amount: Double, val currency: String)
+import com.example.domain.enums.MoneyCurrency
+
+data class Money(val amount: Double, val currency: MoneyCurrency)

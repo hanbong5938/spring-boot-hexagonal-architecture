@@ -67,6 +67,10 @@ project(":domain") {
         withType<Jar> { enabled = true }
         withType<BootJar> { enabled = false }
     }
+
+    dependencies {
+        testApi("org.junit.jupiter:junit-jupiter:5.10.0")
+    }
 }
 
 
