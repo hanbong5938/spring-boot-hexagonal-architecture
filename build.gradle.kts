@@ -80,3 +80,9 @@ project(":application") {
         api(project(":domain"))
     }
 }
+
+project(":framework") {
+    dependencies {
+        api(project(":application"))
+    }
+}
